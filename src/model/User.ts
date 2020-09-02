@@ -1,10 +1,12 @@
+import moment from "moment";
+
 export class User {
   constructor(
     private id: string,
     private name: string,
     private email: string,
     private password: string,
-    private birthdate: string,
+    private birth_date: string,
     private job_role: UserRole,
     private admission_date: string
   ) {}
@@ -30,11 +32,11 @@ export class User {
   }
 
   public getBirthDate(): String {
-    return this.birthdate;
+    return moment(this.birth_date).format("YYYY-MM-DD");
   }
 
   public getAdmissionDate(): String {
-    return this.admission_date;
+    return moment(this.admission_date).format("YYYY-MM-DD");
   }
 }
 

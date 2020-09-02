@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserBusinessSignup } from "../business/userBusiness";
+import { UserBusinessSignup } from "../business/signup/userBusiness";
 import { TokenGenerator } from "../services/tokenGenerator";
 import { UserDatabase } from "../data/UserDataBase";
 import { HashGenerator } from "../services/hashGenerator";

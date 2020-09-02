@@ -1,10 +1,10 @@
-import { UserDatabase } from "../data/UserDataBase";
-import { IdGenerator } from "../services/idGenerator";
-import { HashGenerator } from "../services/hashGenerator";
-import { TokenGenerator } from "../services/tokenGenerator";
-import { UserInterface } from "./userInterface";
-import { stringToUserRole, User } from "../model/User";
-import { BusinessRules } from "./BusinessRules";
+import { UserDatabase } from "../../data/UserDataBase";
+import { IdGenerator } from "../../services/idGenerator";
+import { HashGenerator } from "../../services/hashGenerator";
+import { TokenGenerator } from "../../services/tokenGenerator";
+import { UserInterfaceSignup } from "./userInterface";
+import { stringToUserRole, User } from "../../model/User";
+import { BusinessRules } from "../BusinessRules";
 import moment from "moment";
 
 export class UserBusinessSignup {
@@ -16,7 +16,7 @@ export class UserBusinessSignup {
     private businessRules: BusinessRules
   ) {}
 
-  public async signup(user: UserInterface) {
+  public async signup(user: UserInterfaceSignup) {
     const id = this.idGenerator.generate();
     const hash = await this.hashGenerator.hash(user.password);
 

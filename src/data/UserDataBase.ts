@@ -12,7 +12,7 @@ export class UserDatabase extends BaseDataBase {
         dbModel.name,
         dbModel.email,
         dbModel.password,
-        dbModel.birthdate,
+        dbModel.birth_date,
         dbModel.job_role,
         dbModel.admission_date
       )
@@ -47,5 +47,14 @@ export class UserDatabase extends BaseDataBase {
       SELECT * from ${this.tableName} WHERE id = '${id}'
       `);
     return this.toModel(result[0][0]);
+  }
+
+  public async getAll(): Promise<User[]> {
+    const result = await super.getConnection().raw(`
+    SELECT * from ${this.tableName}`);
+
+    return result[0].map((data: any) => {
+      return this.toModel(data);
+    });
   }
 }
