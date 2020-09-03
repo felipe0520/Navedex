@@ -1,10 +1,12 @@
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { NaverDataBase } from "../../data/NaverDataBase";
+import { BusinessRules } from "../BusinessRules";
 
 export class UserBusinessGetAll {
   constructor(
     private tokenGenerator: TokenGenerator,
-    private naverDataBase: NaverDataBase
+    private naverDataBase: NaverDataBase,
+    private businessRules: BusinessRules
   ) {}
 
   async getAll(token: string) {
@@ -12,6 +14,6 @@ export class UserBusinessGetAll {
 
     const users = await this.naverDataBase.getAll();
 
-    return users;
+    return this.businessRules.dataBaseForScreen(users);
   }
 }

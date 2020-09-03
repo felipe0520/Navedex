@@ -4,9 +4,9 @@ export class Naver {
   constructor(
     private id: string,
     private name: string,
-    private birth_date: string,
+    private birth_date: string | Date,
     private job_role: UserRole,
-    private admission_date: string
+    private admission_date: string | Date
   ) {}
 
   public getId(): string {

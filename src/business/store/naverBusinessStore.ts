@@ -53,9 +53,9 @@ export class NaverBusinessStore {
     const naver = new Naver(
       id,
       user.name,
-      moment(birthDate).format("YYYY-MM-DD"),
+      birthDate,
       stringToUserRole(user.jobRole.toUpperCase()),
-      moment(admissionDate).format("YYYY-MM-DD")
+      admissionDate
     );
 
     await this.naverDataBase.createUser(naver);

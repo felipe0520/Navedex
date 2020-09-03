@@ -3,11 +3,13 @@ import { TokenGenerator } from "../services/tokenGenerator";
 import { UserBusinessGetAll } from "../business/getAll/userBusinessGetAll";
 import { BaseDataBase } from "../data/BaseDatabase";
 import { NaverDataBase } from "../data/NaverDataBase";
+import { BusinessRules } from "../business/BusinessRules";
 
 export class UserControllerGetAll {
   private static userBusinessGetAll = new UserBusinessGetAll(
     new TokenGenerator(),
-    new NaverDataBase()
+    new NaverDataBase(),
+    new BusinessRules()
   );
 
   async getAll(req: Request, res: Response) {

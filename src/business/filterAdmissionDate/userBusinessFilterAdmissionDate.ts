@@ -37,6 +37,6 @@ export class UserBusinessFilterAdmissionDate {
       return "filter did not find result";
     }
 
-    return users;
+    return this.businessRules.dataBaseForScreen(users);
   }
 }

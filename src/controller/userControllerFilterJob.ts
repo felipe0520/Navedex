@@ -8,7 +8,8 @@ import { NaverDataBase } from "../data/NaverDataBase";
 export class UserControllerFilterJob {
   private static userBusinessFilterJob = new UserBusinessFilterJob(
     new TokenGenerator(),
-    new NaverDataBase()
+    new NaverDataBase(),
+    new BusinessRules()
   );
 
   async getUser(req: Request, res: Response) {

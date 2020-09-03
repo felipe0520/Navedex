@@ -41,7 +41,6 @@ export class NaverDataBase extends BaseDataBase {
   public async getAll(): Promise<Naver[]> {
     const result = await super.getConnection().raw(`
     SELECT * from ${this.tableName}`);
-
     return result[0].map((data: any) => {
       return this.toModel(data);
     });

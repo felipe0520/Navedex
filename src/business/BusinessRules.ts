@@ -13,4 +13,16 @@ export class BusinessRules {
   public dateIsAfterToActual(date: string): boolean {
     return new Date(date) > new Date();
   }
+
+  public dataBaseForScreen(users: Naver[]) {
+    return users.map((el) => {
+      return {
+        id: el.getId(),
+        name: el.getName(),
+        birth_date: el.getBirthDate(),
+        admission_date: el.getAdmissionDate(),
+        job_role: el.getJobRole(),
+      };
+    });
+  }
 }

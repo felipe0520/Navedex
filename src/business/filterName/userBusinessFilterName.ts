@@ -1,11 +1,13 @@
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { FilterName } from "./interfaceFilterName";
 import { NaverDataBase } from "../../data/NaverDataBase";
+import { BusinessRules } from "../BusinessRules";
 
 export class UserBusinessFilterName {
   constructor(
     private tokenGenerator: TokenGenerator,
-    private naverDataBase: NaverDataBase
+    private naverDataBase: NaverDataBase,
+    private businessRules: BusinessRules
   ) {}
 
   async getUser(dataFilter: FilterName) {
@@ -17,6 +19,6 @@ export class UserBusinessFilterName {
       return "filter did not find result";
     }
 
-    return users;
+    return this.businessRules.dataBaseForScreen(users);
   }
 }
