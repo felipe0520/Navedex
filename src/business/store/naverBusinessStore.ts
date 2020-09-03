@@ -1,30 +1,19 @@
-import { UserDatabase } from "../../data/UserDataBase";
 import { IdGenerator } from "../../services/idGenerator";
-import { HashGenerator } from "../../services/hashGenerator";
-import { TokenGenerator } from "../../services/tokenGenerator";
-import { UserInterfaceSignup } from "./userInterface";
-import { stringToUserRole, User } from "../../model/User";
+import { NaverInterfaceSignup } from "./naverInterface";
+import { stringToUserRole, Naver } from "../../model/Naver";
 import { BusinessRules } from "../BusinessRules";
 import moment from "moment";
+import { NaverDataBase } from "../../data/NaverDataBase";
 
-export class UserBusinessSignup {
+export class NaverBusinessStore {
   constructor(
-    private userDatabase: UserDatabase,
-    private hashGenerator: HashGenerator,
-    private tokenGenerator: TokenGenerator,
+    private naverDataBase: NaverDataBase,
     private idGenerator: IdGenerator,
     private businessRules: BusinessRules
   ) {}
 
-  public async signup(user: UserInterfaceSignup) {
+  public async signup(user: NaverInterfaceSignup) {
     const id = this.idGenerator.generate();
-    const hash = await this.hashGenerator.hash(user.password);
-
-    const invalidEmail = this.businessRules.validateEmail(user.email);
-
-    if (invalidEmail) {
-      throw new Error("invalid email");
-    }
 
     const invalidFormatAdmissionDate = this.businessRules.validateFormatDate(
       user.admissionDate
@@ -61,22 +50,16 @@ export class UserBusinessSignup {
     const birthDate = new Date(user.birthDate);
     const admissionDate = new Date(user.admissionDate);
 
-    await this.userDatabase.createUser(
-      new User(
-        id,
-        user.name,
-        user.email,
-        hash,
-        moment(birthDate).format("YYYY-MM-DD"),
-        stringToUserRole(user.jobRole.toUpperCase()),
-        moment(admissionDate).format("YYYY-MM-DD")
-      )
+    const naver = new Naver(
+      id,
+      user.name,
+      moment(birthDate).format("YYYY-MM-DD"),
+      stringToUserRole(user.jobRole.toUpperCase()),
+      moment(admissionDate).format("YYYY-MM-DD")
     );
 
-    const accessToken = this.tokenGenerator.generate({
-      id,
-      role: user.jobRole,
-    });
-    return { accessToken };
+    await this.naverDataBase.createUser(naver);
+
+    return { naver };
   }
 }

@@ -34,12 +34,7 @@ export class UserBusinessLogin {
       throw new Error("email or password is incorrect");
     }
 
-    const authenticationData = {
-      id: userData.getId(),
-      role: userData.getJobRole(),
-    };
-
-    const token = this.tokenGenerator.generate(authenticationData);
+    const token = this.tokenGenerator.generate(userData.getId());
 
     return { token };
   }

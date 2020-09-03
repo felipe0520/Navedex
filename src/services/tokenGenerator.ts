@@ -5,11 +5,10 @@ dotenv.config();
 export class TokenGenerator {
   private static expiresIn: number = 12000;
 
-  public generate = (input: AuthenticationData): string => {
+  public generate = (input: string): string => {
     const newToken = jwt.sign(
       {
-        id: input.id,
-        role: input.role,
+        input,
       },
       process.env.JWT_KEY as string,
       {
@@ -24,9 +23,4 @@ export class TokenGenerator {
     const result = { id: payload.id, role: payload.role };
     return result;
   }
-}
-
-export interface AuthenticationData {
-  id: string;
-  role: string;
 }

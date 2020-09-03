@@ -1,7 +1,5 @@
-export interface UserInterfaceSignup {
+export interface NaverInterfaceSignup {
   name: string;
-  password: string;
-  email: string;
   birthDate: string;
   jobRole: string;
   admissionDate: string;
