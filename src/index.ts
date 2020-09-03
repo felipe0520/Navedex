@@ -1,5 +1,6 @@
 import express from "express";
 import { AddressInfo } from "net";
+import { naverRouter } from "./router/naverRouter";
 import { userRouter } from "./router/userRouter";
 
 const app = express();
@@ -16,3 +17,5 @@ const server = app.listen(3000, () => {
 });
 
 app.use("/user/", userRouter);
+
+app.use("/naver/", naverRouter);

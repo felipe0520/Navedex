@@ -4,7 +4,7 @@ import Knex from "knex";
 
 dotenv.config();
 
-export abstract class BaseDataBase {
+export class BaseDataBase {
   private static connection: Knex | null = null;
 
   protected getConnection(): Knex {
@@ -28,5 +28,6 @@ export abstract class BaseDataBase {
     if (BaseDataBase.connection) {
       await BaseDataBase.connection.destroy();
     }
+    BaseDataBase.connection = null;
   }
 }

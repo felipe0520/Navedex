@@ -1,6 +1,6 @@
 import express from "express";
-import { UserControllerSingup } from "../controller/userController";
+import { UserControllerLogin } from "../controller/userControllerLogin";
 
 export const userRouter = express.Router();
 
-userRouter.get("/test", new UserControllerSingup().signup);
+userRouter.get("/login", new UserControllerLogin().login);
