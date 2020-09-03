@@ -5,7 +5,7 @@ export class UserDatabase extends BaseDataBase {
   protected tableName: string = "naver_admin";
 
   private toModel(dbModel?: any): User | undefined {
-    return dbModel && new User(dbModel.id, dbModel.name, dbModel.password);
+    return dbModel && new User(dbModel.id, dbModel.email, dbModel.password);
   }
 
   public async createUser(user: User): Promise<void> {
