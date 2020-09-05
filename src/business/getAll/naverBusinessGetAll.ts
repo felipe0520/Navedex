@@ -1,23 +1,18 @@
 import { TokenGenerator } from "../../services/tokenGenerator";
-import { FilterJob } from "./interfaceFilterJob";
 import { NaverDataBase } from "../../data/NaverDataBase";
 import { BusinessRules } from "../BusinessRules";
 
-export class UserBusinessFilterJob {
+export class NaverBusinessGetAll {
   constructor(
     private tokenGenerator: TokenGenerator,
     private naverDataBase: NaverDataBase,
     private businessRules: BusinessRules
   ) {}
 
-  async getUser(dataFilter: FilterJob) {
-    this.tokenGenerator.verify(dataFilter.token);
+  async getAll(token: string) {
+    this.tokenGenerator.verify(token);
 
-    const users = await this.naverDataBase.getFilterByJob(dataFilter.job);
-
-    if (users.length === 0) {
-      return "filter did not find result";
-    }
+    const users = await this.naverDataBase.getAll();
 
     return this.businessRules.dataBaseForScreen(users);
   }

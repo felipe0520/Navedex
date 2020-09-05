@@ -1,12 +1,12 @@
-import { UserBusinessFilterJob } from "../business/filterJob/userBusinessFilterJob";
-import { TokenGenerator } from "../services/tokenGenerator";
+import { NaverBusinessFilterJob } from "../../business/filterJob/naverBusinessFilterJob";
+import { TokenGenerator } from "../../services/tokenGenerator";
 import { Request, Response } from "express";
-import { BusinessRules } from "../business/BusinessRules";
-import { BaseDataBase } from "../data/BaseDatabase";
-import { NaverDataBase } from "../data/NaverDataBase";
+import { BusinessRules } from "../../business/BusinessRules";
+import { BaseDataBase } from "../../data/BaseDatabase";
+import { NaverDataBase } from "../../data/NaverDataBase";
 
-export class UserControllerFilterJob {
-  private static userBusinessFilterJob = new UserBusinessFilterJob(
+export class NaverControllerFilterJob {
+  private static naverBusinessFilterJob = new NaverBusinessFilterJob(
     new TokenGenerator(),
     new NaverDataBase(),
     new BusinessRules()
@@ -14,7 +14,7 @@ export class UserControllerFilterJob {
 
   async getUser(req: Request, res: Response) {
     try {
-      const result = await UserControllerFilterJob.userBusinessFilterJob.getUser(
+      const result = await NaverControllerFilterJob.naverBusinessFilterJob.getUser(
         {
           job: req.query.job as string,
           token: req.headers.authorization as string,

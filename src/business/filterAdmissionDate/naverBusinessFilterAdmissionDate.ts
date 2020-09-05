@@ -3,7 +3,7 @@ import { FilterAdmissionDate } from "./interfaceFilterAdmissionDate";
 import { BusinessRules } from "../BusinessRules";
 import { NaverDataBase } from "../../data/NaverDataBase";
 
-export class UserBusinessFilterAdmissionDate {
+export class NaverBusinessFilterAdmissionDate {
   constructor(
     private tokenGenerator: TokenGenerator,
     private naverDataBase: NaverDataBase,
