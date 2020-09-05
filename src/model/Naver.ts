@@ -3,14 +3,20 @@ import moment from "moment";
 export class Naver {
   constructor(
     private id: string,
+    private id_admin: string,
     private name: string,
-    private birth_date: string,
+    private birth_date: string | Date,
     private job_role: UserRole,
-    private admission_date: string
+    private admission_date: string | Date,
+    private projects: string[]
   ) {}
 
   public getId(): string {
     return this.id;
+  }
+
+  public getIdAdmin(): string {
+    return this.id_admin;
   }
 
   public getName(): string {
@@ -21,12 +27,16 @@ export class Naver {
     return this.job_role;
   }
 
-  public getBirthDate(): String {
+  public getBirthDate(): string {
     return moment(this.birth_date).format("YYYY-MM-DD");
   }
 
-  public getAdmissionDate(): String {
+  public getAdmissionDate(): string {
     return moment(this.admission_date).format("YYYY-MM-DD");
+  }
+
+  public getProjects(): string[] {
+    return this.projects;
   }
 }
 

@@ -27,7 +27,6 @@ export class UserBusinessSignup {
     }
 
     const existentUser = await this.userDataBase.getUserByEmail(user.email);
-    console.log(existentUser);
 
     if (existentUser) {
       throw new Error("Invalid Email");
