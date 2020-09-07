@@ -14,6 +14,6 @@ export class NaverBusinessGetAll {
 
     const users = await this.naverDataBase.getAll();
 
-    return this.businessRules.dataBaseForScreen(users);
+    return this.businessRules.naverDataBaseForScreen(users);
   }
 }

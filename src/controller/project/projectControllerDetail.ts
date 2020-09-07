@@ -3,11 +3,13 @@ import { BaseDataBase } from "../../data/BaseDatabase";
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { ProjectBusinessDetail } from "../../business/project/getProjectDetail/projectBusinessDetail";
 import { ProjectDataBase } from "../../data/ProjectDataBase";
+import { BusinessRules } from "../../business/BusinessRules";
 
 export class ProjectControllerDetail {
   private static projectBusinessDetail = new ProjectBusinessDetail(
     new TokenGenerator(),
-    new ProjectDataBase()
+    new ProjectDataBase(),
+    new BusinessRules()
   );
 
   async getDetail(req: Request, res: Response) {

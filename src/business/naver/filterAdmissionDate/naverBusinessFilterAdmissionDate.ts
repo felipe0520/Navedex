@@ -21,14 +21,6 @@ export class NaverBusinessFilterAdmissionDate {
       throw new Error("Invalid format date");
     }
 
-    const invalidFormatBirthDate = this.businessRules.dateIsAfterToActual(
-      dataFilter.AdmissionDate
-    );
-
-    if (invalidFormatBirthDate) {
-      throw new Error("Date is admission is after to actual");
-    }
-
     const users = await this.naverDataBase.getFilterByAdmissionDate(
       dataFilter.AdmissionDate
     );
@@ -37,6 +29,6 @@ export class NaverBusinessFilterAdmissionDate {
       return "filter did not find result";
     }
 
-    return this.businessRules.dataBaseForScreen(users);
+    return this.businessRules.naverDataBaseForScreen(users);
   }
 }

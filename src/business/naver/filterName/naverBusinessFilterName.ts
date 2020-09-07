@@ -19,6 +19,6 @@ export class NaverBusinessFilterName {
       return "filter did not find result";
     }
 
-    return this.businessRules.dataBaseForScreen(users);
+    return this.businessRules.naverDataBaseForScreen(users);
   }
 }
