@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { HashGenerator } from "../../services/hashGenerator";
 import { BusinessRules } from "../../business/BusinessRules";
-import { UserBusinessLogin } from "../../business/login/userBusinessLogin";
+import { UserBusinessLogin } from "../../business/user/login/userBusinessLogin";
 import { BaseDataBase } from "../../data/BaseDatabase";
 import { UserDatabase } from "../../data/UserDataBase";
 

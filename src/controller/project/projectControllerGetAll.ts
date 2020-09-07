@@ -1,20 +1,20 @@
 import { Request, Response } from "express";
 import { TokenGenerator } from "../../services/tokenGenerator";
-import { NaverBusinessGetAll } from "../../business/naver/getAll/naverBusinessGetAll";
 import { BaseDataBase } from "../../data/BaseDatabase";
-import { NaverDataBase } from "../../data/NaverDataBase";
 import { BusinessRules } from "../../business/BusinessRules";
+import { ProjectBusinessGetAll } from "../../business/project/getAll/projectBusinessGetAll";
+import { ProjectDataBase } from "../../data/ProjectDataBase";
 
-export class NaverControllerGetAll {
-  private static naverBusinessGetAll = new NaverBusinessGetAll(
+export class ProjectControllerGetAll {
+  private static projectBusinessGetAll = new ProjectBusinessGetAll(
     new TokenGenerator(),
-    new NaverDataBase(),
+    new ProjectDataBase(),
     new BusinessRules()
   );
 
   async getAll(req: Request, res: Response) {
     try {
-      const result = await NaverControllerGetAll.naverBusinessGetAll.getAll(
+      const result = await ProjectControllerGetAll.projectBusinessGetAll.getAll(
         req.headers.authorization as string
       );
 

@@ -4,7 +4,7 @@ import { HashGenerator } from "../../services/hashGenerator";
 import { BusinessRules } from "../../business/BusinessRules";
 import { BaseDataBase } from "../../data/BaseDatabase";
 import { UserDatabase } from "../../data/UserDataBase";
-import { UserBusinessSignup } from "../../business/signup/userBusinessSignUp";
+import { UserBusinessSignup } from "../../business/user/signup/userBusinessSignUp";
 import { IdGenerator } from "../../services/idGenerator";
 
 export class UserControllerSignUp {

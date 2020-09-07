@@ -1,8 +1,8 @@
-import { HashGenerator } from "../../services/hashGenerator";
-import { TokenGenerator } from "../../services/tokenGenerator";
+import { HashGenerator } from "../../../services/hashGenerator";
+import { TokenGenerator } from "../../../services/tokenGenerator";
 import { UserLogin } from "./interfaceUserLogin";
-import { BusinessRules } from "../BusinessRules";
-import { UserDatabase } from "../../data/UserDataBase";
+import { BusinessRules } from "../../BusinessRules";
+import { UserDatabase } from "../../../data/UserDataBase";
 
 export class UserBusinessLogin {
   constructor(

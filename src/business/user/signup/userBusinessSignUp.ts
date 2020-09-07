@@ -1,10 +1,10 @@
-import { IdGenerator } from "../../services/idGenerator";
-import { BusinessRules } from "../BusinessRules";
-import { UserDatabase } from "../../data/UserDataBase";
+import { IdGenerator } from "../../../services/idGenerator";
+import { BusinessRules } from "../../BusinessRules";
+import { UserDatabase } from "../../../data/UserDataBase";
 import { UserInterfaceSignup } from "./userInterface";
-import { HashGenerator } from "../../services/hashGenerator";
-import { User } from "../../model/User";
-import { TokenGenerator } from "../../services/tokenGenerator";
+import { HashGenerator } from "../../../services/hashGenerator";
+import { User } from "../../../model/User";
+import { TokenGenerator } from "../../../services/tokenGenerator";
 
 export class UserBusinessSignup {
   constructor(

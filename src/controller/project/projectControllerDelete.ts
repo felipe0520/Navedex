@@ -1,24 +1,24 @@
 import { Request, Response } from "express";
 import { BaseDataBase } from "../../data/BaseDatabase";
-import { NaverDataBase } from "../../data/NaverDataBase";
-import { NaverBusinessDelete } from "../../business/naver/deleteNaver/naverBusinessDelete";
 import { TokenGenerator } from "../../services/tokenGenerator";
+import { ProjectBusinessDelete } from "../../business/project/deleteProject/projectBusinessDelete";
+import { ProjectDataBase } from "../../data/ProjectDataBase";
 
-export class NaverControllerDelete {
-  private static naverBusinessDelete = new NaverBusinessDelete(
+export class ProjectControllerDelete {
+  private static projectBusinessDelete = new ProjectBusinessDelete(
     new TokenGenerator(),
-    new NaverDataBase()
+    new ProjectDataBase()
   );
 
   async delete(req: Request, res: Response) {
     try {
-      const naverData = {
+      const projectData = {
         token: req.headers.authorization as string,
-        idUser: req.query.id as string,
+        idProject: req.query.id as string,
       };
 
-      const result = await NaverControllerDelete.naverBusinessDelete.delete(
-        naverData
+      const result = await ProjectControllerDelete.projectBusinessDelete.delete(
+        projectData
       );
 
       res.status(200).send(result);

@@ -1,6 +1,6 @@
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { Request, Response } from "express";
-import { NaverBusinessFilterAdmissionDate } from "../../business/filterAdmissionDate/naverBusinessFilterAdmissionDate";
+import { NaverBusinessFilterAdmissionDate } from "../../business/naver/filterAdmissionDate/naverBusinessFilterAdmissionDate";
 import { BusinessRules } from "../../business/BusinessRules";
 import { BaseDataBase } from "../../data/BaseDatabase";
 import { NaverDataBase } from "../../data/NaverDataBase";
