@@ -2,6 +2,7 @@ import express from "express";
 import { AddressInfo } from "net";
 import { naverRouter } from "./router/naverRouter";
 import { userRouter } from "./router/userRouter";
+import { projectRouter } from "./router/projectRouter";
 
 const app = express();
 
@@ -19,3 +20,5 @@ const server = app.listen(3000, () => {
 app.use("/user/", userRouter);
 
 app.use("/naver/", naverRouter);
+
+app.use("/project/", projectRouter);

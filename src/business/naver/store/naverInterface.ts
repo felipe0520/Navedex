@@ -1,6 +1,6 @@
 export interface NaverInterfaceSignup {
   name: string;
-  idAdmin: string;
+  token: string;
   birthDate: string;
   jobRole: string;
   admissionDate: string;

@@ -1,20 +1,20 @@
-import { NaverBusinessFilterName } from "../../business/naver/filterName/naverBusinessFilterName";
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { Request, Response } from "express";
 import { BusinessRules } from "../../business/BusinessRules";
 import { BaseDataBase } from "../../data/BaseDatabase";
-import { NaverDataBase } from "../../data/NaverDataBase";
+import { ProjectBusinessFilterName } from "../../business/project/filterName/projectBusinessFilterName";
+import { ProjectDataBase } from "../../data/ProjectDataBase";
 
-export class NaverControllerFilterName {
-  private static NaverBusinessFilterName = new NaverBusinessFilterName(
+export class ProjectControllerFilterName {
+  private static projectBusinessFilterName = new ProjectBusinessFilterName(
     new TokenGenerator(),
-    new NaverDataBase(),
+    new ProjectDataBase(),
     new BusinessRules()
   );
 
-  async getUser(req: Request, res: Response) {
+  async getProject(req: Request, res: Response) {
     try {
-      const result = await NaverControllerFilterName.NaverBusinessFilterName.getUser(
+      const result = await ProjectControllerFilterName.projectBusinessFilterName.getProject(
         {
           name: req.query.name as string,
           token: req.headers.authorization as string,

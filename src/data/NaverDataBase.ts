@@ -156,10 +156,12 @@ export class NaverDataBase extends BaseDataBase {
     });
   }
 
-  public async getUserDetail(id: string) {
+  public async getNaverDetail(id: string) {
     const result = await super.getConnection().raw(`
-    SELECT * FROM naver_user n 
-  JOIN users_and_projects u ON n.id = u.id_user
-  WHERE u.id_user = '${id};`);
+    SELECT * FROM ${this.tableName}
+    JOIN users_and_projects as u ON ${this.tableName}.id = u.id_user
+    JOIN naver_project as z on u.id_project = z.id
+    WHERE u.id_user = '${id}'`);
+    return result[0];
   }
 }

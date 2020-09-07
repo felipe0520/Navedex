@@ -1,6 +1,6 @@
-import { TokenGenerator } from "../../services/tokenGenerator";
-import { NaverDataBase } from "../../data/NaverDataBase";
-import { DeleteNaverData } from "./interfaceIdUser";
+import { TokenGenerator } from "../../../services/tokenGenerator";
+import { NaverDataBase } from "../../../data/NaverDataBase";
+import { DeleteNaverData } from "./interfaceDeleteNaver";
 
 export class NaverBusinessDelete {
   constructor(

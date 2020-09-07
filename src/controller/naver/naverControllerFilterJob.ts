@@ -1,4 +1,4 @@
-import { NaverBusinessFilterJob } from "../../business/filterJob/naverBusinessFilterJob";
+import { NaverBusinessFilterJob } from "../../business/naver/filterJob/naverBusinessFilterJob";
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { Request, Response } from "express";
 import { BusinessRules } from "../../business/BusinessRules";

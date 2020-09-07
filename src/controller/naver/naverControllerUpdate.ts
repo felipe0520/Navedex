@@ -1,7 +1,7 @@
 import { BusinessRules } from "../../business/BusinessRules";
 import { BaseDataBase } from "../../data/BaseDatabase";
 import { NaverDataBase } from "../../data/NaverDataBase";
-import { NaverBusinessUpdate } from "../../business/updateNaver/naverBusinessUpdate";
+import { NaverBusinessUpdate } from "../../business/naver/updateNaver/naverBusinessUpdate";
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { Request, Response } from "express";
 

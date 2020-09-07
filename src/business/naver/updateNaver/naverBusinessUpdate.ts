@@ -1,20 +1,34 @@
-import { IdGenerator } from "../../services/idGenerator";
-import { NaverInterfaceSignup } from "./naverInterface";
-import { stringToUserRole, Naver } from "../../model/Naver";
-import { BusinessRules } from "../BusinessRules";
-import { NaverDataBase } from "../../data/NaverDataBase";
-import { TokenGenerator } from "../../services/tokenGenerator";
+import {
+  NaverInterfaceUpdate,
+  NaverAuthenticationData,
+} from "./naverUpdateInterface";
+import { TokenGenerator } from "../../../services/tokenGenerator";
+import { NaverDataBase } from "../../../data/NaverDataBase";
+import { Naver, stringToUserRole } from "../../../model/Naver";
+import { BusinessRules } from "../../BusinessRules";
 
-export class NaverBusinessStore {
+export class NaverBusinessUpdate {
   constructor(
+    private tokenGenerator: TokenGenerator,
     private naverDataBase: NaverDataBase,
-    private idGenerator: IdGenerator,
-    private businessRules: BusinessRules,
-    private tokenGenerator: TokenGenerator
+    private businessRules: BusinessRules
   ) {}
 
-  public async signup(user: NaverInterfaceSignup) {
-    const id = this.idGenerator.generate();
+  async update(
+    user: NaverInterfaceUpdate,
+    authentication: NaverAuthenticationData
+  ) {
+    const idAdmin = await this.tokenGenerator.verify(authentication.token).id
+      .input;
+
+    const oldUser = await this.naverDataBase.checkIfUserIsRequiredByTheAdministrator(
+      authentication.id,
+      idAdmin
+    );
+
+    if (!oldUser) {
+      throw new Error("You no have permission");
+    }
 
     const invalidFormatAdmissionDate = this.businessRules.validateFormatDate(
       user.admissionDate
@@ -23,7 +37,6 @@ export class NaverBusinessStore {
     if (invalidFormatAdmissionDate) {
       throw new Error("invalid format admission date");
     }
-
     const invalidAdmissionDate = this.businessRules.dateIsAfterToActual(
       user.admissionDate
     );
@@ -50,22 +63,19 @@ export class NaverBusinessStore {
 
     const birthDate = new Date(user.birthDate);
     const admissionDate = new Date(user.admissionDate);
-    const idAdmin = await this.tokenGenerator.verify(user.idAdmin).id.input;
 
-    console.log(idAdmin);
-
-    const naver = new Naver(
-      id,
-      idAdmin,
+    const newUser = new Naver(
+      authentication.id,
+      oldUser.getIdAdmin(),
       user.name,
       birthDate,
       stringToUserRole(user.jobRole.toUpperCase()),
       admissionDate,
-      user.projects ? user.projects : []
+      user.projects
     );
 
-    await this.naverDataBase.createUser(naver);
+    await this.naverDataBase.alterUser(newUser);
 
-    return { naver };
+    return newUser;
   }
 }

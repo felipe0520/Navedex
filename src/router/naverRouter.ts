@@ -6,11 +6,9 @@ import { NaverControllerFilterJob } from "../controller/naver/naverControllerFil
 import { NaverControllerFilterAdmissionDate } from "../controller/naver/naverControllerFilterAdmissionDate";
 import { NaverControllerUpdate } from "../controller/naver/naverControllerUpdate";
 import { NaverControllerDelete } from "../controller/naver/naverControllerDelete";
+import { NaverControllerDetail } from "../controller/naver/naverControlerDetail";
 
 export const naverRouter = express.Router();
-
-naverRouter.post("/create", new NaverControllerStore().signup);
-naverRouter.post("/update", new NaverControllerUpdate().alter);
 
 naverRouter.get("/all", new NaverControllerGetAll().getAll);
 naverRouter.get("/filterName", new NaverControllerFilterName().getUser);
@@ -19,5 +17,9 @@ naverRouter.get(
   "/filterAdmissionDate",
   new NaverControllerFilterAdmissionDate().getUser
 );
+naverRouter.get("/detail", new NaverControllerDetail().getDetail);
+
+naverRouter.post("/create", new NaverControllerStore().signup);
+naverRouter.post("/update", new NaverControllerUpdate().alter);
 
 naverRouter.delete("/delete", new NaverControllerDelete().delete);

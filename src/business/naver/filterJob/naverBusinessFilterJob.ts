@@ -1,7 +1,7 @@
-import { TokenGenerator } from "../../services/tokenGenerator";
+import { TokenGenerator } from "../../../services/tokenGenerator";
 import { FilterJob } from "./interfaceFilterJob";
-import { NaverDataBase } from "../../data/NaverDataBase";
-import { BusinessRules } from "../BusinessRules";
+import { NaverDataBase } from "../../../data/NaverDataBase";
+import { BusinessRules } from "../../BusinessRules";
 
 export class NaverBusinessFilterJob {
   constructor(

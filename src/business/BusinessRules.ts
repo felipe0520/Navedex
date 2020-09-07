@@ -1,4 +1,5 @@
 import { Naver } from "../model/Naver";
+import { Project } from "../model/Projects";
 
 export class BusinessRules {
   public validateEmail(email: string) {
@@ -22,6 +23,15 @@ export class BusinessRules {
         birth_date: el.getBirthDate(),
         admission_date: el.getAdmissionDate(),
         job_role: el.getJobRole(),
+      };
+    });
+  }
+
+  public projectDataBaseForScreen(project: Project[]) {
+    return project.map((el) => {
+      return {
+        id: el.getId(),
+        name: el.getName(),
       };
     });
   }

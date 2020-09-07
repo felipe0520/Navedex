@@ -1,6 +1,6 @@
-import { TokenGenerator } from "../../services/tokenGenerator";
-import { NaverDataBase } from "../../data/NaverDataBase";
-import { BusinessRules } from "../BusinessRules";
+import { TokenGenerator } from "../../../services/tokenGenerator";
+import { NaverDataBase } from "../../../data/NaverDataBase";
+import { BusinessRules } from "../../BusinessRules";
 
 export class NaverBusinessGetAll {
   constructor(
