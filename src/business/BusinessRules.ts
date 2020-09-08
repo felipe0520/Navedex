@@ -8,6 +8,7 @@ export class BusinessRules {
   }
 
   public validateFormatDate(date: string): boolean {
+    console.log(new Date(date).toString());
     return new Date(date).toString() === "Invalid Date";
   }
 
