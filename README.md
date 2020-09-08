@@ -72,3 +72,14 @@ BCRYPT_COST = cost_encriptação (recomendado no mínimo 12)
 Execute a aplicação:
 ```npm run start:dev  ```
 
+Você poderá usar os enpoints através de um programa (Postman) com o endereço padrão http://localhost:3000.
+
+Para mais detalhes, consulte a documentação : https://documenter.getpostman.com/view/10580422/TVCjw5b5
+
+
+### Dificuldades
+
+Tive dificuldades na realização de algumas query no mysql e consegui supli-las com pesquisa na internet e ajuda de um amigo.
+
+Outra dificuldade que apresentei foi na transformação dos dados da tabela para a forma a ser exibida na resposta, consegui através de tentativas
+e erros.
