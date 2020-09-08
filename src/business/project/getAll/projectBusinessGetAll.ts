@@ -14,6 +14,8 @@ export class ProjectBusinessGetAll {
 
     const projects = await this.projectDataBase.getAll();
 
+    console.log(this.businessRules.projectDataBaseForScreen(projects));
+
     return this.businessRules.projectDataBaseForScreen(projects);
   }
 }

@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
 import { BaseDataBase } from "../../data/BaseDatabase";
 import { NaverDataBase } from "../../data/NaverDataBase";
-import { NaverBusinessDelete } from "../../business/naver/deleteNaver/naverBusinessDelete";
 import { TokenGenerator } from "../../services/tokenGenerator";
 import { NaverBusinessGetNaverDetail } from "../../business/naver/getUserDetail/naverBusinessGetNaverDetail";
+import { BusinessRules } from "../../business/BusinessRules";
 
 export class NaverControllerDetail {
   private static naverBusinessGetNaverDetail = new NaverBusinessGetNaverDetail(
     new TokenGenerator(),
-    new NaverDataBase()
+    new NaverDataBase(),
+    new BusinessRules()
   );
 
   async getDetail(req: Request, res: Response) {

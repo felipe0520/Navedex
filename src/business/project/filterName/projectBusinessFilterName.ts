@@ -19,6 +19,6 @@ export class ProjectBusinessFilterName {
       return "filter did not find result";
     }
 
-    return users;
+    return this.businessRules.projectDataBaseForScreen(users);
   }
 }

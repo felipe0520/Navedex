@@ -6,7 +6,7 @@ import { NaverControllerFilterJob } from "../controller/naver/naverControllerFil
 import { NaverControllerFilterAdmissionDate } from "../controller/naver/naverControllerFilterAdmissionDate";
 import { NaverControllerUpdate } from "../controller/naver/naverControllerUpdate";
 import { NaverControllerDelete } from "../controller/naver/naverControllerDelete";
-import { NaverControllerDetail } from "../controller/naver/naverControlerDetail";
+import { NaverControllerDetail } from "../controller/naver/naverControllerDetail";
 
 export const naverRouter = express.Router();
 
