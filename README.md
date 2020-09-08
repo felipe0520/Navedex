@@ -52,7 +52,7 @@ Você deve fazer a estrutura do banco de dados como achar necessário, mas lembr
 
 No terminal, clone o projeto:
 
-```git clone: https://github.com/felipe0520/Navedex```
+```git clone https://github.com/felipe0520/Navedex```
 
 Entre na pasta do projeto  :
 ```cd Navedex ```
