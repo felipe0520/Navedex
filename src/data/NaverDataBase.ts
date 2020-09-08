@@ -149,7 +149,7 @@ export class NaverDataBase extends BaseDataBase {
     AdmissionDate: string
   ): Promise<Naver[]> {
     const result = await super.getConnection().raw(`
-    SELECT * from ${this.tableName} WHERE admission_date = LIKE '%${AdmissionDate}%'
+    SELECT * from ${this.tableName} WHERE admission_date  = '${AdmissionDate}'
     `);
     return result[0].map((data: any) => {
       return this.toModel(data);
